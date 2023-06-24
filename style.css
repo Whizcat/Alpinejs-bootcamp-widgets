@@ -1,0 +1,66 @@
+body {
+    background-color: lightgrey;
+}
+
+.alpineJS {
+    background-color: rgb(14, 138, 190);
+    border-radius: 0.5em;
+}
+
+.message {
+    padding: 1em;
+    background-color: blueviolet;
+    margin-bottom: 1em;
+    border-radius: 0.3em;
+}
+
+.greet,
+.transport,
+.enoughAirtime,
+.wordGame {
+    flex: 1;
+    border: 3px solid black;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+h1 {
+    text-align: center;
+    font-family:'Trebuchet MS';
+    font-size: 50px;
+    border-radius: 0.1em;
+    border: 3em;
+    color: rgb(193, 22, 10);
+    border: 1em;
+    border-radius: 0.3em;
+    background-color: aquamarine;
+
+
+}
+
+h3 {
+    text-align: center;
+    font-family: 'NewTimes Rome';
+    font-size: 25px;
+    background-color:aquamarine;
+    color: black;
+    border-radius: 0.3em;
+}
+
+@media(min-width:1050px) {
+    .widgets {
+        display: flex;
+    }
+
+    .Widgets2 {
+        display: flex;
+    }
+}
+
+.widgets,
+.Widgets2 {
+    border: 1em;
+    border-radius: 1em;
+    padding: 1em;
+}
