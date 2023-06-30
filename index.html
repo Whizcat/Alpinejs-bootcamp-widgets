@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlpineJS Widgets for Bootcamp Functions</title>
 
-    <script src="bootcampFunctionsJS/greet.js"></script>
-    <script src="widgets/greet-widget.js" defer></script>
+    <script src="greet.js"></script>
+    <script src="greet-widget.js"></script>
 
-    <script src="bootcampFunctionsJS/enoughAirtime.js"></script>
-    <script src="widgets/enoughAirtime-Widget.js"></script>
+    <script src="enoughairtime.js"></script>
+    <script src="enoughairtime-Widget.js"></script>
 
-    <script src="bootcampFunctionsJS/transportFee.js"></script>
-    <script src="widgets/transportFee-Widget.js"></script>
+    <script src="transportFee.js"></script>
+    <script src="transportfare-Widget.js"></script>
 
-    <script src="bootcampFunctionsJS/wordGame.js"></script>
-    <script src="widgets/wordGame-Widget.js"></script>
+    <script src="wordgame.js"></script>
+    <script src="wordgames-Widget.js"></script>
 
     <script src="//unpkg.com/alpinejs" defer></script>
 
@@ -31,21 +31,16 @@
         </div>
         <div class="widgets">
 
-            <div class="greet" x-data="greetwidget">
-                <h3>Greet</h3>
-                <div class="input">
-                    <label for="neighbourName"><b>Please type in your neighbour's name:</b> </label>
-                    <input type="text" x-model="neighbourName" id="neighbourName">
+            <div class="greet" x-data="greetWidget">
+                <H2>Greet Widget</H2>
+                <div x-show="message.length > 0" class="messa" x-text="message">
+                    You will be greeted here
                 </div>
-                <div class="cont"><button x-on:click="greetMe"><b>Greetings</b></button></div>
-
-                <div x-show="message.length > 0" class="message" x-text="message">
-
-                </div>
-
-
+    
+                <label for="name">Please enter your name</label>
+                <input type="text" x-model="name" id="name" placeholder="Enter a name">
+                <button x-on:click="greetMe">Greet</button>
             </div>
-
 
             <div class="transport" x-data="transportFeeWidget">
                 <h3>Transport Fee</h3>
@@ -71,58 +66,86 @@
 
 
                 <div x-show="shiftMsg.length > 0" x-text="shiftMsg" class="message">
-
+                    
                 </div>
+                
             </div>
         </div>
+               
 
         <div class="Widgets2">
 
-            <div class="enoughAirtime" x-data="enoughAirtimeWidget">
-                <h3>Enough Airtime</h3>
-
-                <div>
-                    <label for="msg"><b>Enter your phone usages:</b></label>
-                    <input type="text" id="msg" x-model="airtimeUsed">
+            <div class="enoughairtime" x-data="airtimeWidget">
+                <h2>Enough Airtime</h2>
+                <div class="messa" x-text="messageairtime" x-show="messageairtime.length > 0">
+                    Airtime amount
                 </div>
                 <div>
-                    <label for="msg"><b>Enter available airtime:</b></label>
-                    <input type="text" id="msg" x-model="totalAirtime">
+                    <label for="totalAirtime">Please enter airtime amount</label>
+                    <input type="text" x-model="totalCost" id="totalAirtime" placeholder="Enter airtime bill">
                 </div>
+    
                 <div>
-                    <button x-on:click="totalBill"><b>Calculate Usage</b></button>
+                    <label for="totalAirtime">Please enter airtime balance</label>
+                    <input type="text" x-model="airTime" id="totalAirtime" placeholder="Enter available balance">
                 </div>
-
-
-                <div x-show="airtimeLeft.length > 0" class="message" x-text="airtimeLeft">
-
+                <button x-on:click="airtime">Your airtime</button>
+                
                 </div>
+                
             </div>
-
-            <div class="wordGame" x-data="wordGameWidget">
-                <h3>Word Game</h3>
-                <div>
-                    <label for="string"><b>Type your sentence in the field: </b></label>
-                    <input type="text" id="string" x-model="word">
-                    <div><button @click="mySentence"><b>Sort and Count</b></button></div>
-
-                </div>
-                <span>
-                    <div x-show="longWord.length > 0" class="message" x-text="longWord">
-
-                    </div>
-                    <div x-show="shortWord.length > 0" class="message" x-text="shortWord">
-
-                    </div>
-                    <div x-show="wordLength.length > 0" class="message" x-text="wordLength">
-
-                    </div>
-                </span>
-
-
-            </div>
-
+    
         </div>
+    
+        <div class="widget text-bg-light p-3" x-data="{ sentence : '',
+        longWord : '',
+        shortWord : '',
+        sumOfLetters : 0,
+        solve() {
+            this.longWord = longestWord(this.sentence);
+            this.shortWord = shortestWord(this.sentence);
+            this.sumOfLetters = wordLengths(this.sentence);
+
+
+            setTimeout(() => {
+                this.sentence = '',
+                this.longWord = '',
+                this.shortWord = '',
+                this.sumOfLetters = 0
+               }, 5000);}}">
+
+            <h2>Word game Widget</h2>
+
+            <div class="input">
+                <label for="words">Sentence: </label>
+                <input type="text" x-model="sentence" id="words">
+            </div>
+
+            <div>
+                <button x-on:click="solve()">Submit</button>
+            </div>
+
+            <span>Longest Word: </span>
+            <span x-show="longWord.length > 0" class="message" x-text="longWord">
+
+
+            </span>
+            <br>
+            <br>
+            <span>Shortest Word: </span>
+            <span x-show="shortWord.length > 0" class="message" x-text="shortWord">
+                
+            </span>
+            <br>
+            <br>
+            <span>Count: </span>
+            <span class="message" x-text="sumOfLetters">
+                
+            </span>
+<br>
+        </div>
+            
+
     </div>
 </body>
 
