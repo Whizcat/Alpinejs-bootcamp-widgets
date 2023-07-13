@@ -68,6 +68,25 @@
                 <div x-show="shiftMsg.length > 0" x-text="shiftMsg" class="message">
                     
                 </div>
+
+                <div class="widget" x-data="transportFeeWidget">
+                    <h2>Transport Fee Widget</h2>
+                    <p>The widget checks the transport fee based on the shift you are working.</p>
+                    <div class="input">
+                        <label for="shift">Please enter your shift:</label>
+                        <input type="text" x-model="workingShift" id="shift">
+                    </div>
+            
+                    <span>Results:</span><div class="message" x-text="transportFeeMessage">
+            
+                    </div>
+            
+                    <div>
+                        <button x-on:click="calculate">Check Transport fee</button>
+                    </div>
+                </div>
+                
+
                 
             </div>
         </div>
@@ -142,7 +161,7 @@
             <span class="message" x-text="sumOfLetters">
                 
             </span>
-<br>
+           <br>
         </div>
             
 
